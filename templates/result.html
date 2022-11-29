@@ -1,0 +1,46 @@
+{% extends 'base/base.html' %}
+{% block content %}
+
+<div id="page-wrapper">
+    <div class="top-grids">
+        <div class="top-grids-info">
+            <!-- top-grid-left -->
+            <div class="col-md-12 top-grid-left">
+                <!-- top-big-grids -->
+                <div class="top-big-grids">
+                    <div class="col-md-12 top-grid-left-left">
+                        {% for sport in sports %}
+                            <div class="three-grid">
+                                <div class="three-grid-info">
+                                    <div class="three-grid-img">
+                                        <a href="{% url 'result_detail' sport.id sport.uuid %}"><img src="{{ sport.image.url }}" height="150"/></a>
+                                    </div>
+                                    <div class="three-grid-text">
+                                        <div class="three-grid-text-heading">
+                                            <a class="text" href="{% url 'result_detail' sport.id sport.uuid %}">{{sport.sport_name}} Results</a>
+                                        </div>
+                                        <div class="t-grid author-grid">
+                                            <ul>
+                                                <li><a href="#"><img src="{{sport.icon.url}}"></li>
+                                                <li><a href="#"><i class="fa fa-info-circle"></i> {{sport.sport_type}}</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        <div class="clearfix"> </div>
+                        
+                    </div>
+                    
+                    <!-- top-grid-left-right -->
+                    <div class="clearfix"> </div>
+                </div>
+                <!-- //top-big-grids -->
+            </div>
+
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

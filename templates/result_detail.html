@@ -1,0 +1,619 @@
+{% extends 'base/base.html' %}
+{% block content %}
+
+<div id="page-wrapper">
+    <div class="top-grids">
+        <div class="top-grids-info">
+            <div class="col-md-3 top-grid-left">
+                <!-- today-match -->
+                <div class="today-match">
+                    <div class="today-match-heading">
+                        <h2>Today Matches</h2>
+                    </div>
+                    <div class="match-grid">
+                        <div class="match-info">
+                            <ul>
+                                <li><span>16:00</span> Germany <span class="color">Vs</span> England</li>
+                                <li><span>17:30</span> Hungary <span class="color">Vs</span> Croatia</li>
+                                <li><span>18:45</span> Finland <span class="color">Vs</span> Austria</li>
+                                <li><span>19:00</span> Poland <span class="color">Vs</span> Spain</li>
+                                <li><span>20:15</span> Italy <span class="color">Vs</span> France</li>
+                                <li><span>20:45</span> Portugal <span class="color">Vs</span> Netherlands</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- //today-match -->
+                <!-- ranking -->
+                <div class="ranking">
+                    <div class="ranking-heading">
+                        <h3>Top 20 Teams</h3>
+                    </div>
+                    <div class="ranking-grids">
+                        <table>
+                            <thead>
+                                <th class="th-rank">
+                                    Rank
+                                </th>
+                                <th class="th-country">
+                                    Country
+                                </th>
+                                <th class="th-t-points">
+                                    Total Points
+                                </th>
+                                <th class="th-p-points">
+                                    Previous Points
+                                </th>
+                            </thead>
+                            <tbody>
+                                <tr class="b-color">
+                                    <td class="rank">
+                                        1.
+                                    </td>
+                                    <td class="country">
+                                        Belgium
+                                    </td>
+                                    <td class="t-points">
+                                        1506
+                                    </td>
+                                    <td class="t-points p-points">
+                                        1494
+                                    </td>
+                                </tr>
+                                <tr class="bg-color">
+                                    <td class="rank">
+                                        2.
+                                    </td>
+                                    <td class="country">
+                                        Argentina
+                                    </td>
+                                    <td class="t-points">
+                                        1457
+                                    </td>
+                                    <td class="t-points p-points">
+                                        1455
+                                    </td>
+                                </tr>
+                                <tr class="b-color">
+                                    <td class="rank">
+                                        3.
+                                    </td>
+                                    <td class="country">
+                                        Spain
+                                    </td>
+                                    <td class="t-points">
+                                        1374
+                                    </td>
+                                    <td class="t-points p-points">
+                                        1370
+                                    </td>
+                                </tr>
+                                <tr class="bg-color">
+                                    <td class="rank">
+                                        4.
+                                    </td>
+                                    <td class="country">
+                                        Germany
+                                    </td>
+                                    <td class="t-points">
+                                        1355
+                                    </td>
+                                    <td class="t-points p-points">
+                                        1347
+                                    </td>
+                                </tr>
+                                <tr class="b-color">
+                                    <td class="rank">
+                                        5.
+                                    </td>
+                                    <td class="country">
+                                        Chile
+                                    </td>
+                                    <td class="t-points">
+                                        1307
+                                    </td>
+                                    <td class="t-points p-points">
+                                        1293
+                                    </td>
+                                </tr>
+                                <tr class="bg-color">
+                                    <td class="rank">
+                                        6.
+                                    </td>
+                                    <td class="country">
+                                        Brazil
+                                    </td>
+                                    <td class="t-points">
+                                        1254
+                                    </td>
+                                    <td class="t-points p-points">
+                                        1251
+                                    </td>
+                                </tr>
+                                <tr class="b-color">
+                                    <td class="rank">
+                                        7.
+                                    </td>
+                                    <td class="country">
+                                        Portugal
+                                    </td>
+                                    <td class="t-points">
+                                        1234
+                                    </td>
+                                    <td class="t-points p-points">
+                                        1219
+                                    </td>
+                                </tr>
+                                <tr class="bg-color">
+                                    <td class="rank">
+                                        8.
+                                    </td>
+                                    <td class="country">
+                                        Colombia
+                                    </td>
+                                    <td class="t-points">
+                                        1215
+                                    </td>
+                                    <td class="t-points p-points">
+                                        1211
+                                    </td>
+                                </tr>
+                                <tr class="b-color">
+                                    <td class="rank">
+                                        9.
+                                    </td>
+                                    <td class="country">
+                                        England
+                                    </td>
+                                    <td class="t-points">
+                                        1112
+                                    </td>
+                                    <td class="t-points p-points">
+                                        1106
+                                    </td>
+                                </tr>
+                                <tr class="bg-color">
+                                    <td class="rank">
+                                        10.
+                                    </td>
+                                    <td class="country">
+                                        Austria
+                                    </td>
+                                    <td class="t-points">
+                                        1095
+                                    </td>
+                                    <td class="t-points p-points">
+                                        1091
+                                    </td>
+                                </tr>
+                                <tr class="b-color">
+                                    <td class="rank">
+                                        11.
+                                    </td>
+                                    <td class="country">
+                                        Uruguay
+                                    </td>
+                                    <td class="t-points">
+                                        1082
+                                    </td>
+                                    <td class="t-points p-points">
+                                        1074
+                                    </td>
+                                </tr>
+                                <tr class="bg-color">
+                                    <td class="rank">
+                                        12.
+                                    </td>
+                                    <td class="country">
+                                        Switzerland
+                                    </td>
+                                    <td class="t-points">
+                                        1070
+                                    </td>
+                                    <td class="t-points p-points">
+                                        1050
+                                    </td>
+                                </tr>
+                                <tr class="b-color">
+                                    <td class="rank">
+                                        13.
+                                    </td>
+                                    <td class="country">
+                                        Ecuador
+                                    </td>
+                                    <td class="t-points">
+                                        1039
+                                    </td>
+                                    <td class="t-points p-points">
+                                        1040
+                                    </td>
+                                </tr>
+                                <tr class="bg-color">
+                                    <td class="rank">
+                                        14.
+                                    </td>
+                                    <td class="country">
+                                        Italy
+                                    </td>
+                                    <td class="t-points">
+                                        999
+                                    </td>
+                                    <td class="t-points p-points">
+                                        991
+                                    </td>
+                                </tr>
+                                <tr class="b-color">
+                                    <td class="rank">
+                                        15.
+                                    </td>
+                                    <td class="country">
+                                        Netherlands
+                                    </td>
+                                    <td class="t-points">
+                                        997
+                                    </td>
+                                    <td class="t-points p-points">
+                                        994
+                                    </td>
+                                </tr>
+                                <tr class="bg-color">
+                                    <td class="rank">
+                                        16.
+                                    </td>
+                                    <td class="country">
+                                        Romania
+                                    </td>
+                                    <td class="t-points">
+                                        990
+                                    </td>
+                                    <td class="t-points p-points">
+                                        987
+                                    </td>
+                                </tr>
+                                <tr class="b-color">
+                                    <td class="rank">
+                                        17.
+                                    </td>
+                                    <td class="country">
+                                        Wales
+                                    </td>
+                                    <td class="t-points">
+                                        984
+                                    </td>
+                                    <td class="t-points p-points">
+                                        974
+                                    </td>
+                                </tr>
+                                <tr class="bg-color">
+                                    <td class="rank">
+                                        18.
+                                    </td>
+                                    <td class="country">
+                                        Croatia
+                                    </td>
+                                    <td class="t-points">
+                                        965
+                                    </td>
+                                    <td class="t-points p-points">
+                                        958
+                                    </td>
+                                </tr>
+                                <tr class="b-color">
+                                    <td class="rank">
+                                        19.
+                                    </td>
+                                    <td class="country">
+                                        Hungary
+                                    </td>
+                                    <td class="t-points">
+                                        951
+                                    </td>
+                                    <td class="t-points p-points">
+                                        945
+                                    </td>
+                                </tr>
+                                <tr class="bg-color">
+                                    <td class="rank">
+                                        20.
+                                    </td>
+                                    <td class="country">
+                                        Turkey
+                                    </td>
+                                    <td class="t-points">
+                                        943
+                                    </td>
+                                    <td class="t-points p-points">
+                                        933
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- //ranking -->
+                <!-- player-rank -->
+                <div class="player-rank">
+                    <div class="ranking-heading">
+                        <h3>Top 10 Players</h3>
+                    </div>
+                    <div class="ranking-grids">
+                        <table>
+                            <thead>
+                                <th class="th-rank">
+                                    Rank
+                                </th>
+                                <th class="th-country">
+                                    Name
+                                </th>
+                                <th class="th-t-points">
+                                    Position
+                                </th>
+                                <th class="th-p-points">
+                                    Club
+                                </th>
+                                <th class="th-p-points">
+                                    Nationality
+                                </th>
+                            </thead>
+                            <tbody>
+                                <tr class="b-color">
+                                    <td class="rank">
+                                        1.
+                                    </td>
+                                    <td class="country">
+                                        <a href="club.html">Lionel Messi</a>
+                                    </td>
+                                    <td class="t-points">
+                                        Forward
+                                    </td>
+                                    <td class="t-points p-points">
+                                        <a href="club.html">Barcelona</a>
+                                    </td>
+                                    <td class="t-points p-points">
+                                        Argentina
+                                    </td>
+                                </tr>
+                                <tr class="bg-color">
+                                    <td class="rank">
+                                        2.
+                                    </td>
+                                    <td class="country">
+                                        <a href="club.html">Cristiano Ronaldo</a>
+                                    </td>
+                                    <td class="t-points">
+                                        Forward
+                                    </td>
+                                    <td class="t-points p-points">
+                                        <a href="club.html">Real Madrid</a>
+                                    </td>
+                                    <td class="t-points p-points">
+                                        Portugal
+                                    </td>
+                                </tr>
+                                <tr class="b-color">
+                                    <td class="rank">
+                                        3.
+                                    </td>
+                                    <td class="country">
+                                        <a href="club.html">Xavi</a>
+                                    </td>
+                                    <td class="t-points">
+                                        Midfielder
+                                    </td>
+                                    <td class="t-points p-points">
+                                        <a href="club.html">Barcelona</a>
+                                    </td>
+                                    <td class="t-points p-points">
+                                        Spain
+                                    </td>
+                                </tr>
+                                <tr class="bg-color">
+                                    <td class="rank">
+                                        4.
+                                    </td>
+                                    <td class="country">
+                                        <a href="club.html">Andres Iniesta</a>
+                                    </td>
+                                    <td class="t-points">
+                                        Midfielder
+                                    </td>
+                                    <td class="t-points p-points">
+                                        <a href="club.html">Barcelona</a>
+                                    </td>
+                                    <td class="t-points p-points">
+                                        Spain
+                                    </td>
+                                </tr>
+                                <tr class="b-color">
+                                    <td class="rank">
+                                        5.
+                                    </td>
+                                    <td class="country">
+                                        <a href="club.html">Ibrahimovic</a>
+                                    </td>
+                                    <td class="t-points">
+                                        Forward
+                                    </td>
+                                    <td class="t-points p-points">
+                                        <a href="club.html">PSG</a>
+                                    </td>
+                                    <td class="t-points p-points">
+                                        Sweden
+                                    </td>
+                                </tr>
+                                <tr class="bg-color">
+                                    <td class="rank">
+                                        6.
+                                    </td>
+                                    <td class="country">
+                                        <a href="club.html">Radamel Falcao</a>
+                                    </td>
+                                    <td class="t-points">
+                                        Forward
+                                    </td>
+                                    <td class="t-points p-points">
+                                        <a href="club.html">Atletico Madrid</a>
+                                    </td>
+                                    <td class="t-points p-points">
+                                        Colombia
+                                    </td>
+                                </tr>
+                                <tr class="b-color">
+                                    <td class="rank">
+                                        7.
+                                    </td>
+                                    <td class="country">
+                                        <a href="club.html">Robin van Persie</a>
+                                    </td>
+                                    <td class="t-points">
+                                        Forward
+                                    </td>
+                                    <td class="t-points p-points">
+                                        <a href="club.html">Man Utd</a>
+                                    </td>
+                                    <td class="t-points p-points">
+                                        Netherlands
+                                    </td>
+                                </tr>
+                                <tr class="bg-color">
+                                    <td class="rank">
+                                        8.
+                                    </td>
+                                    <td class="country">
+                                        <a href="club.html">Andrea Pirlo</a>
+                                    </td>
+                                    <td class="t-points">
+                                        Midfielder
+                                    </td>
+                                    <td class="t-points p-points">
+                                        <a href="club.html">Juventus</a>
+                                    </td>
+                                    <td class="t-points p-points">
+                                        Italy
+                                    </td>
+                                </tr>
+                                <tr class="b-color">
+                                    <td class="rank">
+                                        9.
+                                    </td>
+                                    <td class="country">
+                                        <a href="club.html">Yaya Toure</a>
+                                    </td>
+                                    <td class="t-points">
+                                        Midfielder
+                                    </td>
+                                    <td class="t-points p-points">
+                                        <a href="club.html">Man City</a>
+                                    </td>
+                                    <td class="t-points p-points">
+                                        Ivory Coast
+                                    </td>
+                                </tr>
+                                <tr class="bg-color">
+                                    <td class="rank">
+                                        10.
+                                    </td>
+                                    <td class="country">
+                                        <a href="club.html">Edinson Cavani</a>
+                                    </td>
+                                    <td class="t-points">
+                                        Forward
+                                    </td>
+                                    <td class="t-points p-points">
+                                        <a href="club.html">Napoli</a>
+                                    </td>
+                                    <td class="t-points p-points">
+                                        Uruguay
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- //player-rank -->
+                <div class="clearfix"> </div>
+                <!-- most-view-grids -->
+                
+                <!-- //most-view-grids -->
+            </div>
+            <!-- top-grid-left -->
+            <div class="col-md-9 top-grid-left">
+                <!-- top-big-grids -->
+                <div class="top-big-grids">
+                    <div class="col-md-12 top-grid-left-left">
+                        
+                        <div class="three-grids">
+                            <div class="three-grid">
+                                <div class="three-grid-info">
+                                    <div class="three-grid-img">
+                                        <a href="single.html"><img src="images/f2.jpg" alt="" /></a>
+                                    </div>
+                                    <div class="three-grid-text">
+                                        <div class="three-grid-text-heading">
+                                            <a class="text" href="single.html">Fusce ornare congue ligula vel
+                                                placerat</a>
+                                        </div>
+                                        <div class="t-grid author-grid">
+                                            <ul>
+                                                <li><a href="#"><i class="fa fa-clock-o"></i> 1h</a></li>
+                                                <li><a href="#"><i class="fa fa-user"></i> Vestibulum</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="three-grid">
+                                <div class="three-grid-info">
+                                    <div class="three-grid-img">
+                                        <a href="single.html"><img src="images/f4.jpg" alt="" /></a>
+                                    </div>
+                                    <div class="three-grid-text">
+                                        <div class="three-grid-text-heading">
+                                            <a class="text" href="single.html">Fusce ornare congue ligula vel
+                                                placerat</a>
+                                        </div>
+                                        <div class="t-grid author-grid">
+                                            <ul>
+                                                <li><a href="#"><i class="fa fa-clock-o"></i> 2h</a></li>
+                                                <li><a href="#"><i class="fa fa-user"></i> Cras pretium </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="three-grid">
+                                <div class="three-grid-info">
+                                    <div class="three-grid-img">
+                                        <a href="single.html"><img src="images/f6.jpg" alt="" /></a>
+                                    </div>
+                                    <div class="three-grid-text">
+                                        <div class="three-grid-text-heading">
+                                            <a class="text" href="single.html">Fusce ornare congue ligula vel
+                                                placerat</a>
+                                        </div>
+                                        <div class="t-grid author-grid">
+                                            <ul>
+                                                <li><a href="#"><i class="fa fa-clock-o"></i> 4h</a></li>
+                                                <li><a href="#"><i class="fa fa-user"></i> Phasellus</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                        
+                    </div>
+                    
+                    <!-- top-grid-left-right -->
+                    <div class="clearfix"> </div>
+                </div>
+                <!-- //top-big-grids -->
+            </div>
+
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

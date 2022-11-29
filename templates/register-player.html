@@ -1,0 +1,282 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<style>
+   @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+ *, *:after, *:before {
+	 box-sizing: border-box;
+}
+ :root {
+	 --color-text-primary: #1c2a38;
+	 --color-text-secondary: #8a8f98;
+	 --color-text-alert: #d72641;
+	 --color-text-icon: #dbdade;
+	 --color-bg-primary: #fff;
+	 --color-bg-secondary: #f3f5f9;
+	 --color-bg-alert: #fdeaec;
+	 --color-theme-primary: #623ce6;
+}
+
+
+ .match {
+	 background-color: var(--color-bg-primary);
+	 flex-direction: column;
+	 border-radius: 10px;
+	 box-shadow: 0 0 2px 0 rgba(48, 48, 48, 0.1), 0 4px 4px 0 rgba(48, 48, 48, 0.1);
+}
+ .match-header {
+	 display: flex;
+	 border-bottom: 2px solid rgba(48, 48, 48, 0.1);
+	 padding: 16px;
+}
+ .match-status {
+	 background-color: var(--color-bg-alert);
+	 color: var(--color-text-alert);
+	 padding: 8px 12px;
+	 border-radius: 6px;
+	 font-weight: 600;
+	 font-size: 14px;
+	 display: flex;
+	 align-items: center;
+	 margin-right: auto;
+}
+ .match-status:before {
+	 content: "";
+	 display: block;
+	 width: 6px;
+	 height: 6px;
+	 background-color: currentColor;
+	 border-radius: 50%;
+	 margin-right: 8px;
+}
+ .match-tournament {
+	 display: flex;
+	 align-items: center;
+	 font-weight: 600;
+}
+ .match-tournament img {
+	 width: 20px;
+	 margin-right: 12px;
+}
+ .match-actions {
+	 display: flex;
+	 margin-left: auto;
+}
+ .btn-icon {
+	 border: 0;
+	 background-color: transparent;
+	 color: var(--color-text-icon);
+	 display: flex;
+	 align-items: center;
+	 justify-content: center;
+}
+ .match-content {
+	 display: flex;
+	 position: relative;
+}
+ .column {
+	 padding: 10px;
+	 display: flex;
+	 justify-content: center;
+	 align-items: center;
+	 width: calc(100% / 3);
+}
+ .team {
+	 display: flex;
+	 flex-direction: column;
+	 align-items: center;
+}
+ .team-logo {
+	 width: 20px;
+	 height: 20px;
+	 display: flex;
+	 align-items: center;
+	 justify-content: center;
+	 border-radius: 50%;
+	 background-color: var(--color-bg-primary);
+	 box-shadow: 0 4px 4px 0 rgba(48, 48, 48, 0.15), 0 0 0 15px var(--color-bg-secondary);
+}
+ .team-logo img {
+	 width: 20px;
+}
+ .team-name {
+	 text-align: center;
+	 margin-top: 24px;
+	 font-size: 16px;
+	 font-weight: 600;
+}
+ .match-details {
+	 display: flex;
+	 flex-direction: column;
+	 align-items: center;
+}
+ .match-date, .match-referee {
+	 font-size: 14px;
+	 color: var(--color-text-secondary);
+}
+ .match-date strong, .match-referee strong {
+	 color: var(--color-text-primary);
+}
+ .match-score {
+	 margin-top: 12px;
+	 display: flex;
+	 align-items: center;
+}
+ .match-score-number {
+	 font-size: 25px;
+	 font-weight: 600;
+	 line-height: 1;
+}
+ .match-score-number--leading {
+	 color: var(--color-theme-primary);
+}
+ .match-score-divider {
+	 font-size: 28px;
+	 font-weight: 700;
+	 line-height: 1;
+	 color: var(--color-text-icon);
+	 margin-left: 10px;
+	 margin-right: 10px;
+}
+ .match-time-lapsed {
+	 color: #df9443;
+	 font-size: 14px;
+	 font-weight: 600;
+	 margin-top: 8px;
+}
+ .match-referee {
+	 margin-top: 12px;
+}
+ .match-bet-options {
+	 display: flex;
+	 margin-top: 8px;
+	 padding-bottom: 12px;
+}
+ .match-bet-option {
+	 margin-left: 4px;
+	 margin-right: 4px;
+	 border: 1px solid var(--color-text-icon);
+	 background-color: #f9f9f9;
+	 border-radius: 2px;
+	 color: var(--color-text-secondary);
+	 font-size: 14px;
+	 font-weight: 600;
+	 padding: 4px 8px;
+}
+ .match-bet-place {
+	 position: absolute;
+	 bottom: -16px;
+	 left: 50%;
+	 transform: translateX(-50%);
+	 border: 0;
+	 background-color: var(--color-theme-primary);
+	 border-radius: 6px;
+	 padding: 10px 48px;
+	 color: rgba(255, 255, 255, 0.9);
+	 font-size: 14px;
+	 box-shadow: 0 4px 8px 0 rgba(48, 48, 48, 0.25);
+}
+
+ 
+</style>
+<div id="page-wrapper">
+    <div class="top-grids">
+        <div class="top-grids-info">
+            <!-- top-grid-left -->
+            <div class="col-md-12 top-grid-left">
+                <!-- top-big-grids -->
+                <div class="top-big-grids">
+                    <div class="col-md-12 top-grid-left-left">
+                        
+                        <div class="more-sports">
+                            <div class="login-body">
+                                <h3>Register Player and Team</h3><br>
+                                
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs" role="tablist">
+                                  <li class="active"><a href="#hometab" role="tab" data-toggle="tab">Team</a></li>
+                                  <li><a href="#player" role="tab" data-toggle="tab">Player</a></li>
+                                  
+                                </ul>
+                                {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-dismissible {{ message.tags }}">
+                <button type="button" class="close" data-dismiss="alert">
+                ×
+                </button>
+                <strong>{{message}}</strong>
+                </div>
+            {% endfor %}
+            {% endif %}
+                                
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="hometab">
+                                        <br>
+                                        <form action="/add_team/" method="POST">
+                                            {% csrf_token %}
+                                            <div class="form-group">
+                                                <label>Team Name</label>
+                                                <input type="text" class="form-control" name="team_name" placeholder="Team name" required="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Contact No</label>
+                                                <input type="number" class="form-control" name="contact_no" placeholder="Contact Number" required="">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="submit" class="btn btn-sm btn-success" value="Add Team">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="tab-pane" id="player">
+                                        <form action="/add_player/" method="POST">
+                                            {% csrf_token %}
+                                            <div class="form-group">
+                                                <label>Team</label>
+                                                <select class="form-control" name="team" required>
+                                                    <option value="">Select Team</option>
+                                                    {% for team in teams %}
+                                                        <option value="{{team.uuid}}">{{team.team_name}}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Gender</label>
+                                                <select class="form-control" name="gender" required>
+                                                    <option value="">Select Gender</option>
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                </select>
+                                            </div>
+                                        <div class="form-group">
+                                            <label>Sport</label>
+                                            <select class="form-control" name="sport" required>
+                                                <option value="">Select Sports</option>
+                                                {% for sport in sports %}
+                                                    <option value="{{sport.uuid}}">{{sport.sport_name}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="submit" value="Add Player" class="btn btn-sm btn-success">
+                                        </div>
+
+                                        </form>
+                                        
+                                    </div>
+                                </div>
+                        </div>
+                        </div>
+                        
+                    </div>
+                    
+                    <!-- top-grid-left-right -->
+                    <div class="clearfix"> </div>
+                </div>
+                <!-- //top-big-grids -->
+            </div>
+
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

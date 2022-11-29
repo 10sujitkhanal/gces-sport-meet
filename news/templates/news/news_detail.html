@@ -1,0 +1,112 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<style>
+    .overflow {
+  overflow-y: scroll;
+  height: 450px;
+}
+</style>
+<div id="page-wrapper">
+    <div class="top-grids">
+        <div class="top-grids-info">
+            <!-- top-grid-right -->
+
+            <!-- //top-grid-right -->
+            <!-- top-grid-left -->
+            <div class="col-md-12 top-grid-left basket-top-grid-left">
+                <!-- top-big-grids -->
+                <div class="top-big-grids">
+                    <div class="col-md-8 top-grid-left-left s-top-grid-left-left">
+                        <div class="top-grid-left-left-grids">
+                            <div class="s-top-grid-left-img">
+                                {% if news.video %}
+                                    <div data-video="{{news.video}}" id="video"> 
+                                        <img src="{{news.image.url}}" alt="{{news.title}}" height="400"> 
+                                    </div>
+                                {% else %}
+                                    <img src="{{news.image.url}}" alt="{{news.title}}" height="400" width="100%">
+                                {% endif %}
+                                <div  class="single-img-grid">
+                                    <div class="s-author">
+                                        <p>Posted By <i class="fa fa-user" aria-hidden="true"></i> {{news.post_by.first_name}} {{news.post_by.last_name}} &nbsp;&nbsp; <span class="pull-right"><i class="fa fa-calendar" aria-hidden="true"></i> {{news.create_at}}</span></p>
+                                    </div>
+                                    <div><br>
+                                        <center><b><h4>{{news.title}}</h4></b></center>
+                                        <p>
+                                            {{news.detail|safe}}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- top-grid-left-right -->
+                    <div class="col-md-4 top-grid-left-right s-top-grid-left-right">
+                        <!-- most-view-grids -->
+                        <div class="most-view-grids s-most-view-grids">
+                            <div class="most-view-grids-heading">
+                                <h3>All News</h3>
+                            </div>
+                            <div class="sap_tabs">
+                                <div id="horizontalTab" style="display: block; margin: 0px; width: 100%;">
+                                    <ul class="resp-tabs-list">
+                                        <li class="resp-tab-item grid1 resp-tab-active" aria-controls="tab_item-0" role="tab"><span>Today</span></li>
+                                        <li class="resp-tab-item grid2" aria-controls="tab_item-1" role="tab"><span>Latest News</span></li>
+                                        <div class="clearfix"></div>
+                                    </ul>
+                                    <div class="clear"></div>
+                                    <div class="resp-tabs-container overflow">
+                                        <h2 class="resp-accordion resp-tab-active" role="tab" aria-controls="tab_item-0"><span class="resp-arrow"></span>Today</h2><div class="tab-1 resp-tab-content resp-tab-content-active" aria-labelledby="tab_item-0" style="display:block">
+                                            {% for news in today_news %}
+                                            <div class="news-right-grids most-view-left">
+                                                <div class="news-right-grids-img most-view-left-img">
+                                                    <a href="{% url 'news_detail' news.id news.uuid %}"><img src="{{news.image.url}}" height="90"></a>
+                                                </div>
+                                                <div class="news-right-grids-info most-view-left-img">
+                                                    <a href="single.html">{{news.title}}</a>
+                                                    <p>{% with description=news.detail|safe %}
+                                                        {{description|truncatechars:60}}
+                                                    {% endwith %}</p>
+                                                </div>
+                                                <div class="clearfix"> </div>
+                                            </div>
+                                            {% empty %}
+                                            <center><h4>No News Today</h4></center>
+                                            {% endfor %}
+                                        </div>
+                                        <h2 class="resp-accordion" role="tab" aria-controls="tab_item-1"><span class="resp-arrow"></span>This Week</h2><div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
+                                            {% for news in past_news %}
+                                            <div class="news-right-grids most-view-left">
+                                                <div class="news-right-grids-img most-view-left-img">
+                                                    <a href="{% url 'news_detail' news.id news.uuid %}"><img src="{{news.image.url}}" height="90"></a>
+                                                </div>
+                                                <div class="news-right-grids-info most-view-left-img">
+                                                    <a href="single.html">{{news.title}}</a>
+                                                    <p>{% with description=news.detail|safe %}
+                                                        {{description|truncatechars:60}}
+                                                    {% endwith %}</p>
+                                                </div>
+                                                <div class="clearfix"> </div>
+                                            </div>
+                                            {% empty %}
+                                            <center><h4>No Latest News</h4></center>
+                                            {% endfor %}
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //most-view-grids -->
+                    </div>
+                    <!-- top-grid-left-right -->
+                    <div class="clearfix"> </div>
+                </div>
+                <!-- //top-big-grids -->
+            </div>
+            <!-- //top-grid-left -->
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

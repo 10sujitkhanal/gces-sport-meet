@@ -1,0 +1,358 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<style>
+   @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+ *, *:after, *:before {
+	 box-sizing: border-box;
+}
+ :root {
+	 --color-text-primary: #1c2a38;
+	 --color-text-secondary: #8a8f98;
+	 --color-text-alert: #d72641;
+	 --color-text-icon: #dbdade;
+	 --color-bg-primary: #fff;
+	 --color-bg-secondary: #f3f5f9;
+	 --color-bg-alert: #fdeaec;
+	 --color-theme-primary: #623ce6;
+}
+
+
+ .match {
+	 background-color: var(--color-bg-primary);
+	 flex-direction: column;
+	 border-radius: 10px;
+	 box-shadow: 0 0 2px 0 rgba(48, 48, 48, 0.1), 0 4px 4px 0 rgba(48, 48, 48, 0.1);
+}
+ .match-header {
+	 display: flex;
+	 border-bottom: 2px solid rgba(48, 48, 48, 0.1);
+	 padding: 16px;
+}
+ .match-status {
+	 background-color: var(--color-bg-alert);
+	 color: var(--color-text-alert);
+	 padding: 8px 12px;
+	 border-radius: 6px;
+	 font-weight: 600;
+	 font-size: 14px;
+	 display: flex;
+	 align-items: center;
+	 margin-right: auto;
+}
+ .match-status:before {
+	 content: "";
+	 display: block;
+	 width: 6px;
+	 height: 6px;
+	 background-color: currentColor;
+	 border-radius: 50%;
+	 margin-right: 8px;
+}
+ .match-tournament {
+	 display: flex;
+	 align-items: center;
+	 font-weight: 600;
+}
+ .match-tournament img {
+	 width: 20px;
+	 margin-right: 12px;
+}
+ .match-actions {
+	 display: flex;
+	 margin-left: auto;
+}
+ .btn-icon {
+	 border: 0;
+	 background-color: transparent;
+	 color: var(--color-text-icon);
+	 display: flex;
+	 align-items: center;
+	 justify-content: center;
+}
+ .match-content {
+	 display: flex;
+	 position: relative;
+}
+ .column {
+	 padding: 10px;
+	 display: flex;
+	 justify-content: center;
+	 align-items: center;
+	 width: calc(100% / 3);
+}
+ .team {
+	 display: flex;
+	 flex-direction: column;
+	 align-items: center;
+}
+ .team-logo {
+	 width: 20px;
+	 height: 20px;
+	 display: flex;
+	 align-items: center;
+	 justify-content: center;
+	 border-radius: 50%;
+	 background-color: var(--color-bg-primary);
+	 box-shadow: 0 4px 4px 0 rgba(48, 48, 48, 0.15), 0 0 0 15px var(--color-bg-secondary);
+}
+ .team-logo img {
+	 width: 20px;
+}
+ .team-name {
+	 text-align: center;
+	 margin-top: 24px;
+	 font-size: 16px;
+	 font-weight: 600;
+}
+ .match-details {
+	 display: flex;
+	 flex-direction: column;
+	 align-items: center;
+}
+ .match-date, .match-referee {
+	 font-size: 14px;
+	 color: var(--color-text-secondary);
+}
+ .match-date strong, .match-referee strong {
+	 color: var(--color-text-primary);
+}
+ .match-score {
+	 margin-top: 12px;
+	 display: flex;
+	 align-items: center;
+}
+ .match-score-number {
+	 font-size: 25px;
+	 font-weight: 600;
+	 line-height: 1;
+}
+ .match-score-number--leading {
+	 color: var(--color-theme-primary);
+}
+ .match-score-divider {
+	 font-size: 28px;
+	 font-weight: 700;
+	 line-height: 1;
+	 color: var(--color-text-icon);
+	 margin-left: 10px;
+	 margin-right: 10px;
+}
+ .match-time-lapsed {
+	 color: #df9443;
+	 font-size: 14px;
+	 font-weight: 600;
+	 margin-top: 8px;
+}
+ .match-referee {
+	 margin-top: 12px;
+}
+ .match-bet-options {
+	 display: flex;
+	 margin-top: 8px;
+	 padding-bottom: 12px;
+}
+ .match-bet-option {
+	 margin-left: 4px;
+	 margin-right: 4px;
+	 border: 1px solid var(--color-text-icon);
+	 background-color: #f9f9f9;
+	 border-radius: 2px;
+	 color: var(--color-text-secondary);
+	 font-size: 14px;
+	 font-weight: 600;
+	 padding: 4px 8px;
+}
+ .match-bet-place {
+	 position: absolute;
+	 bottom: -16px;
+	 left: 50%;
+	 transform: translateX(-50%);
+	 border: 0;
+	 background-color: var(--color-theme-primary);
+	 border-radius: 6px;
+	 padding: 10px 48px;
+	 color: rgba(255, 255, 255, 0.9);
+	 font-size: 14px;
+	 box-shadow: 0 4px 8px 0 rgba(48, 48, 48, 0.25);
+}
+
+ 
+</style>
+<div id="page-wrapper">
+    <div class="top-grids">
+        <div class="top-grids-info">
+            <div class="col-md-3 top-grid-left">
+                <!-- today-match -->
+                <div class="today-match">
+                    <div class="today-match-heading">
+                        <h2>Upcomming Matches</h2>
+                    </div>
+                    <div class="match-grid">
+                        <div class="match-info">
+
+                            {% regroup singles by sports as single_game %}
+                            {% for single in single_game %}
+                                <h4>{{ single.grouper }}</h4>
+                            <ul>
+                                {% for data in single.list %}
+                                    <li><span>{{data.match_date.match_date|date:"d M"}} Time :{{data.game_time}}</span> <b style="color:black">{{data.description}} ({{data.gender}})</b></li>
+                                {% endfor %}
+                            </ul>
+                            {% endfor %}
+                            
+                            {% regroup multiples by sports as multiple_game %}
+                            {% for multiple in multiple_game %}
+                            <h4>{{ multiple.grouper }}</h4>
+                            <ul>
+                                {% for data in multiple.list %}
+                                    <li>
+                                        <div class="">
+                                            <!-- code here -->
+                                            <div class="match">
+                                                <div class="match-content">
+                                                    <div class="column">
+                                                        <div class="team team--home">
+                                                            <h4 class="team-name">{{data.team1.team_name}}</h4>
+                                                        </div>
+                                                    </div>
+                                                    <div class="column">
+                                                        <div class="match-details">
+                                                            <div class="match-date">
+                                                                <div>
+                                                                    <strong>{{data.category}}</strong> Group: {{data.group.group_name}} (<strong>{{data.gender}}</strong>)</strong>
+                                                                </div>
+                                                                {{data.match_date.match_date}} at <strong>{{data.game_time}}</strong>
+                                                            </div>
+                                                            <div class="match-score">
+                                                                <span class="match-score-number">{% if data.team1_score == None %}-{% else %}{{data.team1_score}} {% endif %}</span>
+                                                                <span class="match-score-divider">:</span>
+                                                                <span class="match-score-number">{% if data.team2_score == None %}-{% else %}{{data.team2_score}} {% endif %}</span>
+                                                            </div>
+                                                            <div class="match-time-lapsed">
+                                                                {% if data.is_finish == False %}Game not held{% else %}Game Ended{% endif %}
+                                                            </div>
+                                                            <div class="match-referee">
+                                                                Tournament Type: <strong>{{data.tournament}}</strong>
+                                                                {% if data.is_finish == True %}
+                                                                <br>
+                                                                Winner: <strong>{{data.winner.team_name}}</strong>
+                                                                {% endif %}
+                                                            </div>					
+                                                        </div>
+                                                    </div>
+                                                    <div class="column">
+                                                        <div class="team team--away">
+                                                            <h4 class="team-name">{{data.team2.team_name}}</h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                            {% endfor %}
+
+
+                        </div>
+                    </div>
+                </div>              
+                
+                <!-- //player-rank -->
+                <div class="clearfix"> </div>
+                <!-- most-view-grids -->
+                
+                <!-- //most-view-grids -->
+            </div>
+            <!-- top-grid-left -->
+            <div class="col-md-9 top-grid-left">
+                <!-- top-big-grids -->
+                <div class="top-big-grids">
+                    <div class="col-md-12 top-grid-left-left">
+                        
+                        <div class="more-sports">
+                            <div class="more-sports-heading">
+                                <h3>All News</h3>
+                            </div>
+                            {% if today_news.count > 0 %}
+                            <div class="more-sports-heading">
+                                <h4>Today News</h4>
+                            </div>
+                            <div class="more-sports-grids">
+                                {% for new in today_news %}
+                                
+                                <div class="col-md-6 more-sports-grid" style="margin-bottom: 10px;">
+                                    <div class="more-grids">
+                                        <div class="col-md-5 more-grid-left">
+                                            <a href="{% url 'news_detail' new.id new.uuid %}">{{new.image_tag}}</a>
+                                        </div>
+                                        <div class="col-md-7 more-grid-right">
+                                            <div class="more-grid-right-top">
+                                                <a href="{% url 'news_detail' new.id new.uuid %}">{{new.title}}</a>
+                                            </div>
+                                            <div class="more-grid-right-bottom">
+                                                <a href="{% url 'news_detail' new.id new.uuid %}">
+                                                    {% with description=new.detail|safe %}
+                                                        {{description|truncatechars:20}}
+                                                    {% endwith %}</a>
+                                            </div>
+                                            <div class="more-grid-right-bottom pull-right">
+                                                <a href="{% url 'news_detail' new.id new.uuid %}">{{new.sports}}</a>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"> </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                
+                                <div class="clearfix"> </div>
+                            </div>
+                            {% endif %}
+                            {% if past_news.count > 0 %}
+                            <div class="more-sports-heading">
+                                <h4>Past News</h4>
+                            </div>
+                            <div class="more-sports-grids">
+                                {% for new in past_news %}
+                                <div class="col-md-6 more-sports-grid" style="margin-bottom: 10px;">
+                                    <div class="more-grids">
+                                        <div class="col-md-5 more-grid-left">
+                                            <a href="{% url 'news_detail' new.id new.uuid %}">{{new.image_tag}}</a>
+                                        </div>
+                                        <div class="col-md-7 more-grid-right">
+                                            <div class="more-grid-right-top">
+                                                <a href="{% url 'news_detail' new.id new.uuid %}">{{new.title}}</a>
+                                            </div>
+                                            <div class="more-grid-right-bottom">
+                                                <a href="{% url 'news_detail' new.id new.uuid %}">
+                                                    {% with description=new.detail|safe %}
+                                                        {{description|truncatechars:20}}
+                                                    {% endwith %}</a>
+                                            </div>
+                                            <div class="more-grid-right-bottom pull-right">
+                                                <a href="{% url 'news_detail' new.id new.uuid %}">{{new.sports}}</a>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"> </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                
+                                <div class="clearfix"> </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                        
+                    </div>
+                    
+                    <!-- top-grid-left-right -->
+                    <div class="clearfix"> </div>
+                </div>
+                <!-- //top-big-grids -->
+            </div>
+
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
